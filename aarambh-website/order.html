@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Place Your Order — Aarambh</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/jpeg" href="assets/images/brand/logo.jpeg">
+  <style>
+    .order-page-hero {
+      padding: 50px 0 36px;
+      border-bottom: 1px solid var(--line);
+    }
+    .order-page-hero .eyebrow { margin-bottom: 10px; }
+    .order-page-hero h1 { font-size: clamp(38px, 7vw, 80px); }
+    .order-page-hero p { color: var(--paper-dim); margin-top: 10px; }
+
+    /* Step labels */
+    .step-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--gold);
+      display: flex; align-items: center; gap: 10px; margin-bottom: 22px;
+    }
+    .step-label::after {
+      content: ""; flex: 1; height: 1px; background: var(--line);
+    }
+
+    /* Success screen */
+    .success-screen {
+      display: none;
+      text-align: center;
+      padding: 60px 0 100px;
+    }
+    .success-screen .tick { font-size: 56px; margin-bottom: 20px; }
+    .success-screen h2 { font-size: clamp(32px, 6vw, 60px); margin-bottom: 12px; }
+    .success-screen p { color: var(--paper-dim); max-width: 460px; margin: 0 auto 30px; }
+
+    /* Payment panel */
+    .pay-panel { display: none; }
+    .pay-panel.show { display: block; }
+    .pay-panel {
+      margin-top: 30px;
+      border: 1px solid var(--gold);
+      border-radius: 2px;
+      padding: 28px;
+      background: rgba(240,169,63,0.05);
+    }
+    .pay-panel h3 { font-size: 24px; margin-bottom: 6px; }
+    .pay-panel .sub { color: var(--paper-dim); font-size: 14px; margin-bottom: 22px; }
+    .qr-box {
+      width: 180px; aspect-ratio: 1; background: #fff;
+      border-radius: 4px; margin-bottom: 14px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .qr-box img { width: 100%; height: 100%; object-fit: contain; }
+    .qr-box .qr-placeholder {
+      font-size: 12px; color: #999; text-align: center; padding: 16px;
+      line-height: 1.5;
+    }
+    .upi-id-block {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px; letter-spacing: .04em;
+      margin-bottom: 20px; color: var(--gold);
+    }
+    .pay-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .step-note {
+      font-size: 12.5px; color: var(--paper-dim);
+      margin-top: 16px; border-top: 1px solid var(--line); padding-top: 14px;
+      line-height: 1.7;
+    }
+
+    /* Form error state */
+    .field input.error, .field textarea.error {
+      outline: 2px solid var(--red); outline-offset: -1px;
+    }
+
+    /* Delivery note */
+    .delivery-note {
+      font-size: 13px; padding: 12px 16px;
+      border-radius: 2px; margin-top: 6px;
+      display: none;
+    }
+    .delivery-note.free { background: rgba(30,180,80,0.12); color: #4ade80; display: block; }
+    .delivery-note.paid { background: rgba(225,53,43,0.1); color: var(--red); display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- ───────── NAV ───────── -->
+  <nav class="site-nav">
+    <div class="wrap nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/images/brand/logo.jpeg" alt="Aarambh">
+        <span class="wordmark">Aarambh</span>
+      </a>
+      <button class="nav-toggle" aria-label="Menu">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="polo.html">Polo</a></li>
+        <li><a href="oversized.html">Oversized</a></li>
+        <li><a href="printed.html">Printed</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ───────── ORDER HERO ───────── -->
+  <section class="order-page-hero halftone">
+    <div class="wrap">
+      <p class="eyebrow">One Step Away</p>
+      <h1 class="h-display">Place<br>Your <em style="color:var(--gold)">Order</em></h1>
+      <p>Fill in your details below — we'll confirm payment and dispatch within 24 hours.</p>
+    </div>
+  </section>
+
+  <!-- ───────── MAIN CONTENT ───────── -->
+  <div class="wrap">
+
+    <!-- SUCCESS SCREEN (shown after submission) -->
+    <div class="success-screen" id="successScreen">
+      <div class="tick">🎉</div>
+      <h2 class="h-display">Order<br>Received!</h2>
+      <p>Your order details have been sent to us. Complete the payment below and we'll confirm your order once it's received.</p>
+      <!-- Payment panel shown inline inside success screen -->
+      <div id="payPanelSuccess" style="max-width:480px;margin:0 auto;text-align:left"></div>
+      <a href="index.html" class="btn btn-outline" style="margin-top:30px;display:inline-block">← Back to Shop</a>
+    </div>
+
+    <!-- ORDER FORM + SUMMARY LAYOUT -->
+    <div class="order-layout" id="orderLayout">
+
+      <!-- LEFT: FORM -->
+      <div>
+        <!-- Step 1: Contact -->
+        <div class="step-label">Step 01 — Your Details</div>
+        <div class="field">
+          <label for="name">Full Name *</label>
+          <input type="text" id="name" name="name" placeholder="Rahul Sharma" required>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="phone">Phone / WhatsApp *</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required>
+          </div>
+          <div class="field">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="_replyto" placeholder="you@email.com" required>
+          </div>
+        </div>
+
+        <!-- Step 2: Address -->
+        <div class="step-label" style="margin-top:32px">Step 02 — Delivery Address</div>
+        <div class="field">
+          <label for="address">Street Address *</label>
+          <input type="text" id="address" name="address" placeholder="Flat 12, Sunshine Apartments, MG Road" required>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="city">City *</label>
+            <input type="text" id="city" name="city" placeholder="Bangalore" required>
+          </div>
+          <div class="field">
+            <label for="pincode">Pincode *</label>
+            <input type="text" id="pincode" name="pincode" placeholder="560001" required maxlength="6">
+          </div>
+        </div>
+        <div class="field">
+          <label for="state">State *</label>
+          <input type="text" id="state" name="state" placeholder="Karnataka" required>
+        </div>
+
+        <!-- Step 3: Order note -->
+        <div class="step-label" style="margin-top:32px">Step 03 — Any Notes?</div>
+        <div class="field">
+          <label for="note">Special Instructions (optional)</label>
+          <textarea id="note" name="note" rows="3" placeholder="e.g. Leave at gate, urgent order, etc."></textarea>
+        </div>
+
+        <!-- Hidden fields — pre-filled from URL params -->
+        <input type="hidden" id="h-product" name="product">
+        <input type="hidden" id="h-color" name="color">
+        <input type="hidden" id="h-size" name="size">
+        <input type="hidden" id="h-price" name="price">
+        <input type="hidden" id="h-delivery" name="delivery_charge">
+        <input type="hidden" name="_subject" id="h-subject" value="New Aarambh Order">
+        <input type="hidden" name="_next" value="">
+
+        <!-- Submit -->
+        <button class="btn btn-solid" id="submitBtn" onclick="submitOrder(event)"
+                style="width:100%;padding:17px;font-size:15px;margin-top:8px">
+          Confirm Order →
+        </button>
+        <p style="font-size:12px;color:var(--paper-dim);margin-top:10px;text-align:center">
+          By placing an order you agree to our return &amp; shipping policy.
+        </p>
+      </div>
+
+      <!-- RIGHT: ORDER SUMMARY -->
+      <aside class="order-summary">
+        <p class="eyebrow" style="margin-bottom:16px">Your Order</p>
+
+        <img id="sum-img" src="" alt="Product" style="width:100%;border-radius:2px;display:none">
+
+        <div class="line">
+          <span id="sum-product" style="font-weight:600">—</span>
+          <span id="sum-price" style="color:var(--gold);font-family:'Bebas Neue';font-size:20px">—</span>
+        </div>
+        <div class="line">
+          <span style="color:var(--paper-dim)">Colour</span>
+          <span id="sum-color">—</span>
+        </div>
+        <div class="line">
+          <span style="color:var(--paper-dim)">Size</span>
+          <span id="sum-size">—</span>
+        </div>
+        <div class="line">
+          <span style="color:var(--paper-dim)">Delivery</span>
+          <span id="sum-delivery">₹60</span>
+        </div>
+        <div class="line total">
+          <span>Total</span>
+          <span class="price" id="sum-total">—</span>
+        </div>
+        <div id="sum-delivery-note" class="delivery-note"></div>
+      </aside>
+
+    </div><!-- /order-layout -->
+  </div><!-- /wrap -->
+
+  <!-- ───────── FOOTER ───────── -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <p class="wordmark" style="font-size:26px">Aarambh</p>
+          <p>Bold streetwear from India.<br>Wear it. Style it. Make it yours.</p>
+        </div>
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h5>Shop</h5>
+            <ul>
+              <li><a href="polo.html">Polo T-Shirts</a></li>
+              <li><a href="oversized.html">Oversized Tees</a></li>
+              <li><a href="printed.html">Printed Tees</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Contact</h5>
+            <ul>
+              <li id="footer-email">hello@aarambh.com</li>
+              <li><a id="footer-wa" href="#">WhatsApp Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2024 Aarambh. All rights reserved.</span>
+        <span>Made with 🔥 in India</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+  <script>
+    // ── 1. Read URL params and populate page ──
+    const params = new URLSearchParams(window.location.search);
+    const orderProduct  = params.get('product') || '';
+    const orderColor    = params.get('color')   || '';
+    const orderSize     = params.get('size')    || '';
+    const orderPrice    = parseInt(params.get('price') || '0', 10);
+    const orderImg      = params.get('img')     || '';
+    const DELIVERY_FEE  = orderPrice >= AARAMBH_CONFIG.FREE_DELIVERY_THRESHOLD ? 0 : 60;
+    const orderTotal    = orderPrice + DELIVERY_FEE;
+
+    // Populate summary sidebar
+    if (orderImg) {
+      const si = document.getElementById('sum-img');
+      si.src = orderImg; si.style.display = 'block';
+    }
+    document.getElementById('sum-product').textContent  = orderProduct || 'Product';
+    document.getElementById('sum-price').textContent    = orderPrice ? '₹' + orderPrice : '—';
+    document.getElementById('sum-color').textContent    = orderColor  || '—';
+    document.getElementById('sum-size').textContent     = orderSize   || '—';
+    document.getElementById('sum-total').textContent    = orderTotal  ? '₹' + orderTotal : '—';
+
+    if (DELIVERY_FEE === 0) {
+      document.getElementById('sum-delivery').textContent = 'FREE';
+      document.getElementById('sum-delivery').style.color = '#4ade80';
+      const note = document.getElementById('sum-delivery-note');
+      note.textContent = '🎉 You qualify for free delivery!';
+      note.className = 'delivery-note free';
+    } else {
+      document.getElementById('sum-delivery').textContent = '₹' + DELIVERY_FEE;
+      const note = document.getElementById('sum-delivery-note');
+      note.textContent = 'Add ₹' + (AARAMBH_CONFIG.FREE_DELIVERY_THRESHOLD - orderPrice) + ' more to get free delivery.';
+      note.className = 'delivery-note paid';
+    }
+
+    // Fill hidden fields
+    document.getElementById('h-product').value  = orderProduct;
+    document.getElementById('h-color').value    = orderColor;
+    document.getElementById('h-size').value     = orderSize;
+    document.getElementById('h-price').value    = '₹' + orderPrice;
+    document.getElementById('h-delivery').value = DELIVERY_FEE === 0 ? 'Free' : '₹' + DELIVERY_FEE;
+    document.getElementById('h-subject').value  = 'New Aarambh Order — ' + orderProduct + ' (' + orderColor + ', ' + orderSize + ')';
+
+    // Footer
+    document.getElementById('footer-email').textContent = AARAMBH_CONFIG.CONTACT_EMAIL;
+    document.getElementById('footer-wa').href = 'https://wa.me/' + AARAMBH_CONFIG.WHATSAPP_NUMBER;
+
+    // ── 2. Build payment panel HTML ──
+    function buildPayPanel(customerName) {
+      const waText = encodeURIComponent(
+        'Hi Aarambh! 🙌\n' +
+        'I\'ve placed an order:\n\n' +
+        '📦 Product: ' + orderProduct + '\n' +
+        '🎨 Colour: ' + orderColor + '\n' +
+        '📐 Size: ' + orderSize + '\n' +
+        '💰 Total: ₹' + orderTotal + (DELIVERY_FEE === 0 ? ' (Free Delivery)' : ' incl. ₹' + DELIVERY_FEE + ' delivery') + '\n\n' +
+        '👤 Name: ' + customerName + '\n' +
+        'Please confirm my order! 🔥'
+      );
+      const waUrl = 'https://wa.me/' + AARAMBH_CONFIG.WHATSAPP_NUMBER + '?text=' + waText;
+
+      return `
+        <div style="margin-top:28px;border:1px solid var(--gold);border-radius:2px;padding:26px;background:rgba(240,169,63,0.05)">
+          <h3 class="h-display" style="font-size:32px;margin-bottom:6px">Complete Payment</h3>
+          <p class="sub" style="color:var(--paper-dim);font-size:14px;margin-bottom:20px">
+            Scan the QR code below or use our UPI ID to pay ₹${orderTotal}.
+            Once paid, tap the WhatsApp button to confirm your order with us.
+          </p>
+
+          <div class="qr-box" style="width:180px;aspect-ratio:1;background:#fff;border-radius:4px;margin-bottom:14px;overflow:hidden;display:flex;align-items:center;justify-content:center">
+            <img src="${AARAMBH_CONFIG.UPI_QR_IMAGE}"
+                 alt="UPI QR Code"
+                 style="width:100%;height:100%;object-fit:contain"
+                 onerror="this.parentElement.innerHTML='<p class=qr-placeholder>QR code not set up yet.<br>Use UPI ID below.</p>'">
+          </div>
+
+          <div style="font-family:Bebas Neue,sans-serif;font-size:22px;letter-spacing:.04em;color:var(--gold);margin-bottom:20px">
+            UPI: ${AARAMBH_CONFIG.UPI_ID}
+          </div>
+
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <a href="${waUrl}" target="_blank" class="btn btn-solid"
+               style="background:#25D366;border-color:#25D366;color:#000;font-size:13px">
+              ✅ Confirm on WhatsApp
+            </a>
+            <a href="upi://pay?pa=${AARAMBH_CONFIG.UPI_ID}&pn=Aarambh&am=${orderTotal}&cu=INR"
+               class="btn btn-outline" style="font-size:13px">
+              Open UPI App
+            </a>
+          </div>
+
+          <p style="font-size:12px;color:var(--paper-dim);margin-top:16px;border-top:1px solid var(--line);padding-top:14px;line-height:1.7">
+            📧 A copy of your order has been emailed to you.<br>
+            Once we receive your payment, you'll get an order confirmation on WhatsApp within 2 hours.<br>
+            Questions? WhatsApp us directly at +${AARAMBH_CONFIG.WHATSAPP_NUMBER}.
+          </p>
+        </div>
+      `;
+    }
+
+    // ── 3. Form submission via Formspree ──
+    async function submitOrder(e) {
+      e.preventDefault();
+
+      // Basic validation
+      const required = ['name','phone','email','address','city','pincode','state'];
+      let valid = true;
+      required.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el.value.trim()) {
+          el.classList.add('error');
+          valid = false;
+        } else {
+          el.classList.remove('error');
+        }
+      });
+      if (!valid) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+
+      const btn = document.getElementById('submitBtn');
+      btn.textContent = 'Sending…';
+      btn.setAttribute('disabled', true);
+
+      // Build form data
+      const formData = new FormData();
+      formData.append('name',            document.getElementById('name').value);
+      formData.append('_replyto',        document.getElementById('email').value);
+      formData.append('phone',           document.getElementById('phone').value);
+      formData.append('address',         document.getElementById('address').value);
+      formData.append('city',            document.getElementById('city').value);
+      formData.append('pincode',         document.getElementById('pincode').value);
+      formData.append('state',           document.getElementById('state').value);
+      formData.append('note',            document.getElementById('note').value);
+      formData.append('product',         orderProduct);
+      formData.append('color',           orderColor);
+      formData.append('size',            orderSize);
+      formData.append('price',           '₹' + orderPrice);
+      formData.append('delivery_charge', DELIVERY_FEE === 0 ? 'Free' : '₹' + DELIVERY_FEE);
+      formData.append('total',           '₹' + orderTotal);
+      formData.append('_subject',        'New Aarambh Order — ' + orderProduct + ' (' + orderColor + ', ' + orderSize + ')');
+
+      try {
+        const res = await fetch(AARAMBH_CONFIG.FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          // Hide form, show success + payment panel
+          document.getElementById('orderLayout').style.display = 'none';
+          const successScreen = document.getElementById('successScreen');
+          successScreen.style.display = 'block';
+          document.getElementById('payPanelSuccess').innerHTML =
+            buildPayPanel(document.getElementById('name').value);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          const data = await res.json();
+          alert('Submission failed: ' + (data.error || 'Please try again or WhatsApp us directly.'));
+          btn.textContent = 'Confirm Order →';
+          btn.removeAttribute('disabled');
+        }
+      } catch (err) {
+        alert('Network error. Please check your connection and try again, or WhatsApp us directly.');
+        btn.textContent = 'Confirm Order →';
+        btn.removeAttribute('disabled');
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aarambh — Indian streetwear. Polo tees, oversized tees, printed DTF tees and hoodies. Wear it. Style it.">
+  <title>Aarambh — Wear It. Style It.</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/jpeg" href="assets/images/brand/logo.jpeg">
+  <style>
+    /* ── Hero accent overlay ── */
+    .hero-accent {
+      position: absolute; right: 0; top: 0; bottom: 0; width: 46%;
+      background: linear-gradient(135deg, rgba(240,169,63,0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    /* ── Brand story strip ── */
+    .story { padding: 90px 0; border-bottom: 1px solid var(--line); }
+    .story-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+    .story-text .story-big { font-size: clamp(42px, 7vw, 86px); }
+    .story-text p { margin-top: 22px; max-width: 400px; color: var(--paper-dim); font-size: 16px; line-height: 1.75; }
+    .story-stats { display: flex; flex-direction: column; gap: 1px; border: 1px solid var(--line); border-radius: 2px; overflow: hidden; }
+    .stat { padding: 28px 30px; border-bottom: 1px solid var(--line); background: var(--ink-2); }
+    .stat:last-child { border-bottom: none; }
+    .stat .big { font-family: 'Bebas Neue', sans-serif; font-size: 52px; color: var(--gold); letter-spacing: .02em; }
+    .stat p { color: var(--paper-dim); font-size: 13.5px; }
+    @media (max-width: 780px) {
+      .story-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+    /* ── Product preview strip ── */
+    .preview-strip {
+      padding: 90px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .preview-scroll {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      margin-top: 40px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold) var(--line);
+    }
+    .preview-tile {
+      flex: 0 0 240px;
+      aspect-ratio: 3/4;
+      border-radius: 2px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #fff;
+      position: relative;
+    }
+    .preview-tile img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+    .preview-tile-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: rgba(12,12,12,0.85); padding: 12px 14px;
+      font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ───────── NAV ───────── -->
+  <nav class="site-nav">
+    <div class="wrap nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/images/brand/logo.jpeg" alt="Aarambh">
+        <span class="wordmark">Aarambh</span>
+      </a>
+      <button class="nav-toggle" aria-label="Menu">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="polo.html">Polo</a></li>
+        <li><a href="oversized.html">Oversized</a></li>
+        <li><a href="printed.html">Printed</a></li>
+        <li><a href="hoodie.html">Hoodies</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ───────── MARQUEE ───────── -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>FREE DELIVERY ABOVE ₹1000</span><span>◆</span>
+      <span>DTF PRINTS — WASH INSIDE OUT FOR LONGER LIFE</span><span>◆</span>
+      <span>SIZES S · M · L · XL</span><span>◆</span>
+      <span>NEW DROPS INCOMING</span><span>◆</span>
+      <span>WEAR IT. STYLE IT.</span><span>◆</span>
+      <span>FREE DELIVERY ABOVE ₹1000</span><span>◆</span>
+      <span>DTF PRINTS — WASH INSIDE OUT FOR LONGER LIFE</span><span>◆</span>
+      <span>SIZES S · M · L · XL</span><span>◆</span>
+      <span>NEW DROPS INCOMING</span><span>◆</span>
+      <span>WEAR IT. STYLE IT.</span><span>◆</span>
+    </div>
+  </div>
+
+  <!-- ───────── HERO ───────── -->
+  <section class="hero halftone">
+    <div class="hero-accent"></div>
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Est. 2024 &nbsp;·&nbsp; Indian Streetwear</p>
+      <h1 class="h-display">
+        Wear it.<br><em>Style it.</em>
+      </h1>
+      <p class="lede">
+        Bold threads for those who move with purpose. Streetwear
+        built for the Indian street — raw, real, and yours.
+      </p>
+      <div class="hero-cta">
+        <a href="#catalogue" class="btn btn-solid">Shop Now</a>
+        <a href="printed.html" class="btn btn-outline">View Prints</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── CATALOGUE TILES ───────── -->
+  <section class="cat-section" id="catalogue">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">Collections</p>
+          <h2 class="h-display">The Full Catalogue</h2>
+        </div>
+        <p style="color:var(--paper-dim);max-width:300px;font-size:14px">
+          Pick a style, find your fit — every piece dispatched within 3–5 days.
+        </p>
+      </div>
+
+      <div class="cat-grid">
+        <!-- Polo -->
+        <a href="polo.html" class="cat-card reveal">
+          <img src="assets/images/polo/navy.jpg" alt="Aarambh Polo Tees">
+          <div class="cat-label">
+            <span class="eyebrow">6 Colours · S–XL</span>
+            <h3 class="h-display">Polo</h3>
+            <p class="meta">From ₹300</p>
+          </div>
+        </a>
+
+        <!-- Oversized -->
+        <a href="oversized.html" class="cat-card reveal">
+          <img src="assets/images/oversized/navy.png" alt="Aarambh Oversized Tees">
+          <div class="cat-label">
+            <span class="eyebrow">5 Colours · S–XL</span>
+            <h3 class="h-display">Oversized</h3>
+            <p class="meta">From ₹320</p>
+          </div>
+        </a>
+
+        <!-- Printed -->
+        <a href="printed.html" class="cat-card reveal">
+          <img src="assets/images/printed/justice/red-front.png" alt="Aarambh Printed Tees">
+          <div class="cat-label">
+            <span class="eyebrow">DTF Print · Multiple Designs</span>
+            <h3 class="h-display">Printed</h3>
+            <p class="meta">From ₹400</p>
+          </div>
+        </a>
+
+        <!-- Coming Soon -->
+        <div class="cat-card locked reveal">
+          <img src="assets/images/polo/charcoal.jpg" alt="Coming Soon">
+          <div class="lock-badge">Coming Soon</div>
+          <div class="cat-label">
+            <span class="eyebrow">Regular Fit · Hoodies</span>
+            <h3 class="h-display">More Drops</h3>
+            <p class="meta">Stay tuned</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── PRODUCT PREVIEW STRIP ───────── -->
+  <section class="preview-strip">
+    <div class="wrap">
+      <p class="eyebrow reveal">A Taste of the Range</p>
+      <div class="preview-scroll">
+        <a href="polo.html" class="preview-tile">
+          <img src="assets/images/polo/maroon.jpg" alt="Maroon Polo">
+          <div class="preview-tile-label">Polo — Maroon</div>
+        </a>
+        <a href="polo.html" class="preview-tile">
+          <img src="assets/images/polo/charcoal.jpg" alt="Charcoal Polo">
+          <div class="preview-tile-label">Polo — Charcoal</div>
+        </a>
+        <a href="oversized.html" class="preview-tile">
+          <img src="assets/images/oversized/lavender.jpg" alt="Lavender Oversized">
+          <div class="preview-tile-label">Oversized — Lavender</div>
+        </a>
+        <a href="printed.html" class="preview-tile">
+          <img src="assets/images/printed/justice/white-front.png" alt="Justice White">
+          <div class="preview-tile-label">Justice — White</div>
+        </a>
+        <a href="printed.html" class="preview-tile">
+          <img src="assets/images/printed/justice/red-front.png" alt="Justice Red">
+          <div class="preview-tile-label">Justice — Red</div>
+        </a>
+        <a href="oversized.html" class="preview-tile">
+          <img src="assets/images/oversized/white.jpg" alt="White Oversized">
+          <div class="preview-tile-label">Oversized — White</div>
+        </a>
+        <a href="polo.html" class="preview-tile">
+          <img src="assets/images/polo/cream.jpg" alt="Cream Polo">
+          <div class="preview-tile-label">Polo — Cream</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── BRAND STORY ───────── -->
+  <section class="story">
+    <div class="wrap story-inner">
+      <div class="story-text reveal">
+        <p class="eyebrow">Who We Are</p>
+        <h2 class="h-display story-big">The<br><em style="color:var(--gold)">Begin&shy;ning.</em></h2>
+        <p>
+          Aarambh means <em>beginning</em> — and every drop is a fresh start.
+          We make streetwear for people who aren't waiting for permission
+          to stand out. Clean cuts, bold prints, quality you can feel.
+        </p>
+        <p style="margin-top:14px">
+          Every piece is crafted with premium fabric and finished with
+          direct-to-film printing that stays vivid wash after wash —
+          as long as you wash it inside out.
+        </p>
+      </div>
+      <div class="story-stats reveal">
+        <div class="stat">
+          <div class="big">4+</div>
+          <p>Categories of streetwear — Polo, Oversized, Printed, Hoodies</p>
+        </div>
+        <div class="stat">
+          <div class="big">₹300</div>
+          <p>Starting price. Premium quality that doesn't ask you to break the bank.</p>
+        </div>
+        <div class="stat">
+          <div class="big">S–XL</div>
+          <p>Full size range, every style, every drop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── INFO STRIP ───────── -->
+  <div class="info-strip halftone">
+    <div class="wrap">
+      <div class="info-grid">
+        <div class="info-cell reveal">
+          <p class="num">01</p>
+          <h4>Free Delivery</h4>
+          <p>On all orders above ₹1000. Dispatched within 24 hours, delivered in 3–5 days across India.</p>
+        </div>
+        <div class="info-cell reveal">
+          <p class="num">02</p>
+          <h4>DTF Print Care</h4>
+          <p>Our prints use Direct-to-Film technology. Always wash inside out in cold water for maximum longevity.</p>
+        </div>
+        <div class="info-cell reveal">
+          <p class="num">03</p>
+          <h4>Easy Returns</h4>
+          <p>Size not right? Reach us on WhatsApp within 7 days of delivery and we'll sort it out.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───────── FOOTER ───────── -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <p class="wordmark" style="font-size:26px">Aarambh</p>
+          <p>Bold streetwear from India.<br>Wear it. Style it. Make it yours.</p>
+        </div>
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h5>Shop</h5>
+            <ul>
+              <li><a href="polo.html">Polo T-Shirts</a></li>
+              <li><a href="oversized.html">Oversized Tees</a></li>
+              <li><a href="printed.html">Printed Tees</a></li>
+              <li><a href="#" style="opacity:.4">Hoodies (Soon)</a></li>
+              <li><a href="#" style="opacity:.4">Regular Fit (Soon)</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Info</h5>
+            <ul>
+              <li><a href="order.html">How to Order</a></li>
+              <li><a href="printed.html#care">Care Guide</a></li>
+              <li><a href="polo.html#size-chart">Size Chart</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Contact</h5>
+            <ul>
+              <li id="footer-email">hello@aarambh.com</li>
+              <li><a id="footer-wa" href="#">WhatsApp Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2024 Aarambh. All rights reserved.</span>
+        <span>Made with 🔥 in India</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+  <script>
+    // Inject config values into footer
+    document.getElementById('footer-email').textContent = AARAMBH_CONFIG.CONTACT_EMAIL;
+    document.getElementById('footer-wa').href = 'https://wa.me/' + AARAMBH_CONFIG.WHATSAPP_NUMBER;
+  </script>
+</body>
+</html>

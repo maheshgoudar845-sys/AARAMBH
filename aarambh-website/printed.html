@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aarambh Printed Tees — DTF prints, bold designs, S–XL. From ₹400.">
+  <title>Printed Tees — Aarambh</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/jpeg" href="assets/images/brand/logo.jpeg">
+  <style>
+    .cat-hero { background: radial-gradient(ellipse at 80% 50%, rgba(240,169,63,0.2), transparent 55%), var(--ink); }
+    .cat-hero h1 em { color: var(--gold); }
+    .size-hint { display:none; font-size:11.5px; color:var(--red); margin-top:4px; font-weight:600; }
+
+    /* Front / Back toggle */
+    .fb-toggle-row { display: flex; gap: 8px; margin-bottom: 4px; }
+    .fb-btn {
+      font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      border: 1px solid var(--line-strong); border-radius: 2px; padding: 6px 12px;
+      color: var(--paper-dim); transition: all .15s;
+    }
+    .fb-btn.active { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+
+    /* Colour swatches for printed designs */
+    .printed-swatches { display: flex; gap: 10px; align-items: center; margin-bottom: 4px; }
+    .printed-swatch {
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 2px solid transparent; outline: 2px solid var(--line-strong); outline-offset: 2px;
+      cursor: pointer; transition: outline-color .15s;
+    }
+    .printed-swatch.active { outline-color: var(--paper); }
+    .swatch-label { font-size: 13px; color: var(--paper-dim); }
+
+    /* DTF care note banner */
+    .care-banner {
+      border: 1px solid var(--gold);
+      border-radius: 2px;
+      padding: 20px 26px;
+      background: rgba(240,169,63,0.06);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 60px;
+    }
+    .care-banner .icon { font-size: 26px; }
+    .care-banner h4 { font-size: 15px; margin-bottom: 4px; }
+    .care-banner p { font-size: 13.5px; color: var(--paper-dim); }
+
+    /* Future design placeholder card */
+    .placeholder-card {
+      border: 1px dashed var(--line-strong);
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      aspect-ratio: 4/5;
+      text-align: center;
+      padding: 30px;
+      color: var(--paper-dim);
+      background: var(--ink-2);
+    }
+    .placeholder-card .plus { font-size: 42px; color: var(--gold); line-height: 1; }
+    .placeholder-card h4 { font-size: 17px; font-weight: 700; color: var(--paper); }
+    .placeholder-card p { font-size: 13px; }
+  </style>
+</head>
+<body>
+
+  <!-- ───────── NAV ───────── -->
+  <nav class="site-nav">
+    <div class="wrap nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/images/brand/logo.jpeg" alt="Aarambh">
+        <span class="wordmark">Aarambh</span>
+      </a>
+      <button class="nav-toggle" aria-label="Menu">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="polo.html">Polo</a></li>
+        <li><a href="oversized.html">Oversized</a></li>
+        <li><a href="printed.html" class="active">Printed</a></li>
+        <li><a href="hoodie.html">Hoodies</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ───────── MARQUEE ───────── -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>DTF DIRECT-TO-FILM PRINTING</span><span>◆</span>
+      <span>WASH INSIDE OUT — COLD WATER ONLY</span><span>◆</span>
+      <span>FREE DELIVERY ABOVE ₹1000</span><span>◆</span>
+      <span>FRONT + BACK PRINTS</span><span>◆</span>
+      <span>FROM ₹400</span><span>◆</span>
+      <span>DTF DIRECT-TO-FILM PRINTING</span><span>◆</span>
+      <span>WASH INSIDE OUT — COLD WATER ONLY</span><span>◆</span>
+      <span>FREE DELIVERY ABOVE ₹1000</span><span>◆</span>
+      <span>FRONT + BACK PRINTS</span><span>◆</span>
+      <span>FROM ₹400</span><span>◆</span>
+    </div>
+  </div>
+
+  <!-- ───────── CATEGORY HERO ───────── -->
+  <section class="cat-hero halftone">
+    <div class="wrap">
+      <p class="eyebrow">Aarambh Collection</p>
+      <h1 class="h-display">Printed<br><em>Tees</em></h1>
+      <p>DTF direct-to-film prints. Bold front-and-back designs that don't fade into the background.</p>
+      <span class="price-pill">₹400 – ₹900 &nbsp;·&nbsp; S, M, L, XL</span>
+    </div>
+  </section>
+
+  <!-- ───────── PRODUCTS ───────── -->
+  <div class="wrap">
+    <div class="product-grid" style="padding-top:56px">
+
+      <!-- =================== DESIGN 01: JUSTICE & BE BOLD =================== -->
+      <div class="product-card reveal" id="justice-card">
+        <div class="product-media"
+             data-front="assets/images/printed/justice/white-front.png"
+             data-back="assets/images/printed/justice/white-back.png">
+          <img id="justice-img"
+               src="assets/images/printed/justice/white-front.png"
+               alt="Justice & Be Bold — Printed Tee">
+        </div>
+        <div class="product-body">
+          <div class="product-title">
+            <h3>Justice &amp; Be Bold</h3>
+            <!-- TODO: Update price for this design -->
+            <span class="price">₹450</span>
+          </div>
+
+          <!-- Front / Back toggle -->
+          <div class="fb-toggle-row">
+            <button class="fb-btn active" onclick="showFace(this,'front','justice')">Front</button>
+            <button class="fb-btn" onclick="showFace(this,'back','justice')">Back</button>
+          </div>
+
+          <!-- Colour swatches -->
+          <div>
+            <div class="printed-swatches">
+              <button class="printed-swatch active"
+                      style="background:#f5f5f5"
+                      title="White"
+                      onclick="switchPrintColor(this,'white','justice')"></button>
+              <button class="printed-swatch"
+                      style="background:#e1352b"
+                      title="Red"
+                      onclick="switchPrintColor(this,'red','justice')"></button>
+              <span class="swatch-label" id="justice-color-label">White</span>
+            </div>
+          </div>
+
+          <!-- Size -->
+          <div>
+            <div class="size-row">
+              <button class="size-pill" onclick="selectSize(this)">S</button>
+              <button class="size-pill" onclick="selectSize(this)">M</button>
+              <button class="size-pill" onclick="selectSize(this)">L</button>
+              <button class="size-pill" onclick="selectSize(this)">XL</button>
+            </div>
+            <p class="size-hint">Please select a size</p>
+          </div>
+
+          <!-- Care note -->
+          <p class="care-note">🧺 DTF Print — always wash inside out in cold water</p>
+
+          <a href="order.html?product=Justice+%26+Be+Bold+Tee&color=White&price=450&img=assets/images/printed/justice/white-front.png"
+             class="btn btn-solid btn-block buy-now"
+             id="justice-buy"
+             data-base-href="order.html?product=Justice+%26+Be+Bold+Tee&price=450"
+             onclick="return buyNow(this, event)">Buy Now</a>
+        </div>
+      </div>
+      <!-- =================== /DESIGN 01 =================== -->
+
+      <!--
+      ================================================================
+      🆕 ADD NEW PRINTED T-SHIRT DESIGNS BELOW THIS COMMENT
+      ================================================================
+      To add a new design:
+      1. Create a new folder: assets/images/printed/DESIGN-NAME/
+      2. Add front.png and back.png inside it
+      3. Copy the block below and paste it above this comment
+      4. Update: design name, price, image paths, color swatches (if any)
+
+      TEMPLATE — copy from here ↓
+
+      <div class="product-card reveal">
+        <div class="product-media"
+             data-front="assets/images/printed/DESIGN-NAME/front.png"
+             data-back="assets/images/printed/DESIGN-NAME/back.png">
+          <img id="DESIGN-ID-img"
+               src="assets/images/printed/DESIGN-NAME/front.png"
+               alt="DESIGN NAME — Printed Tee">
+        </div>
+        <div class="product-body">
+          <div class="product-title">
+            <h3>DESIGN NAME</h3>
+            <span class="price">₹XXX</span>
+          </div>
+          <div class="fb-toggle-row">
+            <button class="fb-btn active" onclick="showFace(this,'front','DESIGN-ID')">Front</button>
+            <button class="fb-btn" onclick="showFace(this,'back','DESIGN-ID')">Back</button>
+          </div>
+          <div>
+            <div class="size-row">
+              <button class="size-pill" onclick="selectSize(this)">S</button>
+              <button class="size-pill" onclick="selectSize(this)">M</button>
+              <button class="size-pill" onclick="selectSize(this)">L</button>
+              <button class="size-pill" onclick="selectSize(this)">XL</button>
+            </div>
+            <p class="size-hint">Please select a size</p>
+          </div>
+          <p class="care-note">🧺 DTF Print — always wash inside out in cold water</p>
+          <a href="order.html?product=DESIGN+NAME+Tee&color=DEFAULT-COLOR&price=XXX&img=assets/images/printed/DESIGN-NAME/front.png"
+             class="btn btn-solid btn-block buy-now"
+             id="DESIGN-ID-buy"
+             data-base-href="order.html?product=DESIGN+NAME+Tee&price=XXX"
+             onclick="return buyNow(this, event)">Buy Now</a>
+        </div>
+      </div>
+
+      ↑ copy until here ================================================================
+      -->
+
+      <!-- Placeholder — upcoming drops -->
+      <div class="placeholder-card reveal">
+        <div class="plus">+</div>
+        <h4>New Design<br>Coming Soon</h4>
+        <p>Follow us on Instagram to be the first to know when new prints drop.</p>
+      </div>
+
+      <div class="placeholder-card reveal">
+        <div class="plus">+</div>
+        <h4>Your Design<br>Here</h4>
+        <p>More bold graphics in the works. Stay tuned.</p>
+      </div>
+
+    </div><!-- /product-grid -->
+
+    <!-- DTF CARE GUIDE -->
+    <div id="care"></div>
+    <div class="care-banner reveal">
+      <div class="icon">🧺</div>
+      <div>
+        <h4>How to care for DTF prints</h4>
+        <p>
+          Always turn your printed tee <strong>inside out</strong> before washing.
+          Use cold water (max 30°C) on a gentle cycle. Avoid direct sunlight when drying.
+          Do not iron directly on the print — use a cloth layer if needed.
+          Following these steps keeps your print vibrant wash after wash.
+        </p>
+      </div>
+    </div>
+
+  </div><!-- /wrap -->
+
+  <!-- ───────── FOOTER ───────── -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <p class="wordmark" style="font-size:26px">Aarambh</p>
+          <p>Bold streetwear from India.<br>Wear it. Style it. Make it yours.</p>
+        </div>
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h5>Shop</h5>
+            <ul>
+              <li><a href="polo.html">Polo T-Shirts</a></li>
+              <li><a href="oversized.html">Oversized Tees</a></li>
+              <li><a href="printed.html">Printed Tees</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Contact</h5>
+            <ul>
+              <li id="footer-email">hello@aarambh.com</li>
+              <li><a id="footer-wa" href="#">WhatsApp Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2024 Aarambh. All rights reserved.</span>
+        <span>Made with 🔥 in India</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('footer-email').textContent = AARAMBH_CONFIG.CONTACT_EMAIL;
+    document.getElementById('footer-wa').href = 'https://wa.me/' + AARAMBH_CONFIG.WHATSAPP_NUMBER;
+
+    // ── Size selector ──
+    function selectSize(btn) {
+      const row = btn.closest('.size-row');
+      row.querySelectorAll('.size-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const card = btn.closest('.product-card');
+      const buyBtn = card.querySelector('.buy-now');
+      if (buyBtn) {
+        buyBtn.setAttribute('href', buyBtn.getAttribute('data-base-href') +
+          '&size=' + encodeURIComponent(btn.textContent.trim()));
+      }
+    }
+
+    // ── Front / Back toggle ──
+    function showFace(btn, face, designId) {
+      const card = btn.closest('.product-card');
+      card.querySelectorAll('.fb-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const media = card.querySelector('.product-media');
+      const img = card.querySelector('.product-media img');
+      img.src = face === 'front' ? media.getAttribute('data-front') : media.getAttribute('data-back');
+    }
+
+    // ── Printed colour swatch ──
+    const printImages = {
+      justice: {
+        white: {
+          front: 'assets/images/printed/justice/white-front.png',
+          back:  'assets/images/printed/justice/white-back.png'
+        },
+        red: {
+          front: 'assets/images/printed/justice/red-front.png',
+          back:  'assets/images/printed/justice/red-back.png'
+        }
+      }
+    };
+
+    let currentFace = { justice: 'front' };
+    let currentColor = { justice: 'white' };
+
+    function switchPrintColor(swatchBtn, color, designId) {
+      const card = swatchBtn.closest('.product-card');
+      card.querySelectorAll('.printed-swatch').forEach(s => s.classList.remove('active'));
+      swatchBtn.classList.add('active');
+      currentColor[designId] = color;
+
+      // Update label
+      const label = document.getElementById(designId + '-color-label');
+      if (label) label.textContent = color.charAt(0).toUpperCase() + color.slice(1);
+
+      // Update image
+      const img = document.getElementById(designId + '-img');
+      const face = currentFace[designId] || 'front';
+      if (img && printImages[designId] && printImages[designId][color]) {
+        img.src = printImages[designId][color][face];
+        // Update media data attrs
+        const media = card.querySelector('.product-media');
+        media.setAttribute('data-front', printImages[designId][color]['front']);
+        media.setAttribute('data-back',  printImages[designId][color]['back']);
+      }
+
+      // Update Buy Now href
+      const buyBtn = document.getElementById(designId + '-buy');
+      if (buyBtn) {
+        const baseHref = buyBtn.getAttribute('data-base-href');
+        const imgParam = printImages[designId][color].front;
+        const colorLabel = color.charAt(0).toUpperCase() + color.slice(1);
+        const sizeEl = card.querySelector('.size-pill.active');
+        const sizeParam = sizeEl ? '&size=' + encodeURIComponent(sizeEl.textContent.trim()) : '';
+        buyBtn.setAttribute('href', baseHref + '&color=' + encodeURIComponent(colorLabel) + '&img=' + encodeURIComponent(imgParam) + sizeParam);
+      }
+    }
+
+    // Keep track of front/back state when toggling
+    document.addEventListener('click', function(e) {
+      const fbBtn = e.target.closest('.fb-btn');
+      if (!fbBtn) return;
+      const card = fbBtn.closest('.product-card');
+      const activeBtn = card.querySelector('.fb-btn.active');
+      if (activeBtn && activeBtn !== fbBtn) {
+        const designId = card.id ? card.id.replace('-card','') : null;
+        if (designId) {
+          currentFace[designId] = fbBtn.textContent.trim().toLowerCase();
+        }
+      }
+    });
+  </script>
+</body>
+</html>

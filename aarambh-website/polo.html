@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aarambh Polo T-Shirts — 6 colours, premium piqué, sizes S–XL. Starting ₹300.">
+  <title>Polo Tees — Aarambh</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/jpeg" href="assets/images/brand/logo.jpeg">
+  <style>
+    .cat-hero { background: radial-gradient(ellipse at 80% 50%, rgba(225,53,43,0.2), transparent 55%), var(--ink); }
+    .cat-hero h1 em { color: var(--red); }
+    .size-hint { display: none; font-size: 11.5px; color: var(--red); margin-top: 4px; font-weight: 600; }
+    details.size-chart-wrap { margin: 0 0 60px; border: 1px solid var(--line); border-radius: 2px; }
+    details.size-chart-wrap summary {
+      padding: 16px 22px; cursor: pointer; font-size: 13px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase; list-style: none;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    details.size-chart-wrap summary::after { content: "＋"; font-size: 18px; }
+    details[open] summary::after { content: "－"; }
+    .size-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    .size-table th { text-align: left; padding: 10px 16px; background: var(--ink-2); color: var(--gold); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; border-bottom: 1px solid var(--line); }
+    .size-table td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--paper-dim); }
+    .size-table tr:last-child td { border-bottom: none; }
+  </style>
+</head>
+<body>
+
+  <!-- ───────── NAV ───────── -->
+  <nav class="site-nav">
+    <div class="wrap nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/images/brand/logo.jpeg" alt="Aarambh">
+        <span class="wordmark">Aarambh</span>
+      </a>
+      <button class="nav-toggle" aria-label="Menu">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="polo.html" class="active">Polo</a></li>
+        <li><a href="oversized.html">Oversized</a></li>
+        <li><a href="printed.html">Printed</a></li>
+        <li><a href="hoodie.html">Hoodies</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ───────── MARQUEE ───────── -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>FREE DELIVERY ABOVE ₹1000</span><span>◆</span>
+      <span>POLO TEES — 6 COLOURS</span><span>◆</span>
+      <span>SIZES S · M · L · XL</span><span>◆</span>
+      <span>PREMIUM PIQUÉ FABRIC</span><span>◆</span>
+      <span>STARTING ₹300</span><span>◆</span>
+      <span>FREE DELIVERY ABOVE ₹1000</span><span>◆</span>
+      <span>POLO TEES — 6 COLOURS</span><span>◆</span>
+      <span>SIZES S · M · L · XL</span><span>◆</span>
+      <span>PREMIUM PIQUÉ FABRIC</span><span>◆</span>
+      <span>STARTING ₹300</span><span>◆</span>
+    </div>
+  </div>
+
+  <!-- ───────── CATEGORY HERO ───────── -->
+  <section class="cat-hero halftone">
+    <div class="wrap">
+      <p class="eyebrow">Aarambh Collection</p>
+      <h1 class="h-display">Polo<br><em>Tees</em></h1>
+      <p>Classic polo collar, premium piqué fabric, relaxed fit. Six clean colours that go with everything.</p>
+      <span class="price-pill">₹300 – ₹350 &nbsp;·&nbsp; S, M, L, XL</span>
+    </div>
+  </section>
+
+  <!-- ───────── PRODUCTS ───────── -->
+  <div class="wrap">
+    <div class="product-grid" style="padding-top:56px">
+
+      <!-- 01 CHARCOAL -->
+      <div class="product-card reveal" data-default-color="Charcoal">
+        <div class="product-media">
+          <img src="assets/images/polo/charcoal.jpg" alt="Polo Tee — Charcoal">
+        </div>
+        <div class="product-body">
+          <div class="product-title">
+            <h3>Polo Tee<br><small style="font-size:13px;font-weight:500;color:var(--paper-dim)">Charcoal Grey</small></h3>
+            <span class="price">₹320</span>
+          </div>
+          <div>
+            <div class="size-row">
+              <button class="size-pill" onclick="selectSize(this)">S</button>
+              <button class="size-pill" onclick="selectSize(this)">M</button>
+              <button class="size-pill" onclick="selectSize(this)">L</button>
+              <button class="size-pill" onclick="selectSize(this)">XL</button>
+            </div>
+            <p class="size-hint">Please select a size</p>
+          </div>
+          <a href="order.html?product=Polo+Tee&color=Charcoal+Grey&price=320&img=assets/images/polo/charcoal.jpg"
+             class="btn btn-solid btn-block buy-now"
+             data-base-href="order.html?product=Polo+Tee&color=Charcoal+Grey&price=320&img=assets/images/polo/charcoal.jpg"
+             onclick="return buyNow(this, event)">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- 02 CREAM -->
+      <div class="product-card reveal" data-default-color="Cream">
+        <div class="product-media">
+          <img src="assets/images/polo/cream.jpg" alt="Polo Tee — Cream">
+        </div>
+        <div class="product-body">
+          <div class="product-title">
+            <h3>Polo Tee<br><small style="font-size:13px;font-weight:500;color:var(--paper-dim)">Cream / Off-White</small></h3>
+            <span class="price">₹320</span>
+          </div>
+          <div>
+            <div class="size-row">
+              <button class="size-pill" onclick="selectSize(this)">S</button>
+              <button class="size-pill" onclick="selectSize(this)">M</button>
+              <button class="size-pill" onclick="selectSize(this)">L</button>
+              <button class="size-pill" onclick="selectSize(this)">XL</button>
+            </div>
+            <p class="size-hint">Please select a size</p>
+          </div>
+          <a href="order.html?product=Polo+Tee&color=Cream&price=320&img=assets/images/polo/cream.jpg"
+             class="btn btn-solid btn-block buy-now"
+             data-base-href="order.html?product=Polo+Tee&color=Cream&price=320&img=assets/images/polo/cream.jpg"
+             onclick="return buyNow(this, event)">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- 03 KHAKI -->
+      <div class="product-card reveal" data-default-color="Khaki">
+        <div class="product-media">
+          <img src="assets/images/polo/khaki.jpg" alt="Polo Tee — Khaki">
+        </div>
+        <div class="product-body">
+          <div class="product-title">
+            <h3>Polo Tee<br><small style="font-size:13px;font-weight:500;color:var(--paper-dim)">Khaki / Sage</small></h3>
+            <span class="price">₹320</span>
+          </div>
+          <div>
+            <div class="size-row">
+              <button class="size-pill" onclick="selectSize(this)">S</button>
+              <button class="size-pill" onclick="selectSize(this)">M</button>
+              <button class="size-pill" onclick="selectSize(this)">L</button>
+              <button class="size-pill" onclick="selectSize(this)">XL</button>
+            </div>
+            <p class="size-hint">Please select a size</p>
+          </div>
+          <a href="order.html?product=Polo+Tee&color=Khaki&price=320&img=assets/images/polo/khaki.jpg"
+             class="btn btn-solid btn-block buy-now"
+             data-base-href="order.html?product=Polo+Tee&color=Khaki&price=320&img=assets/images/polo/khaki.jpg"
+             onclick="return buyNow(this, event)">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- 04 BLACK -->
+      <div class="product-card reveal" data-default-color="Black">
+        <div class="product-media">
+          <img src="assets/images/polo/black.jpg" alt="Polo Tee — Black">
+        </div>
+        <div class="product-body">
+          <div class="product-title">
+            <h3>Polo Tee<br><small style="font-size:13px;font-weight:500;color:var(--paper-dim)">Jet Black</small></h3>
+            <span class="price">₹320</span>
+          </div>
+          <div>
+            <div class="size-row">
+              <button class="size-pill" onclick="selectSize(this)">S</button>
+              <button class="size-pill" onclick="selectSize(this)">M</button>
+              <button class="size-pill" onclick="selectSize(this)">L</button>
+              <button class="size-pill" onclick="selectSize(this)">XL</button>
+            </div>
+            <p class="size-hint">Please select a size</p>
+          </div>
+          <a href="order.html?product=Polo+Tee&color=Black&price=320&img=assets/images/polo/black.jpg"
+             class="btn btn-solid btn-block buy-now"
+             data-base-href="order.html?product=Polo+Tee&color=Black&price=320&img=assets/images/polo/black.jpg"
+             onclick="return buyNow(this, event)">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- 05 NAVY -->
+      <div class="product-card reveal" data-default-color="Navy">
+        <div class="product-media">
+          <img src="assets/images/polo/navy.jpg" alt="Polo Tee — Navy">
+        </div>
+        <div class="product-body">
+          <div class="product-title">
+            <h3>Polo Tee<br><small style="font-size:13px;font-weight:500;color:var(--paper-dim)">Navy Blue</small></h3>
+            <span class="price">₹320</span>
+          </div>
+          <div>
+            <div class="size-row">
+              <button class="size-pill" onclick="selectSize(this)">S</button>
+              <button class="size-pill" onclick="selectSize(this)">M</button>
+              <button class="size-pill" onclick="selectSize(this)">L</button>
+              <button class="size-pill" onclick="selectSize(this)">XL</button>
+            </div>
+            <p class="size-hint">Please select a size</p>
+          </div>
+          <a href="order.html?product=Polo+Tee&color=Navy&price=320&img=assets/images/polo/navy.jpg"
+             class="btn btn-solid btn-block buy-now"
+             data-base-href="order.html?product=Polo+Tee&color=Navy&price=320&img=assets/images/polo/navy.jpg"
+             onclick="return buyNow(this, event)">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- 06 MAROON -->
+      <div class="product-card reveal" data-default-color="Maroon">
+        <div class="product-media">
+          <img src="assets/images/polo/maroon.jpg" alt="Polo Tee — Maroon">
+        </div>
+        <div class="product-body">
+          <div class="product-title">
+            <h3>Polo Tee<br><small style="font-size:13px;font-weight:500;color:var(--paper-dim)">Maroon / Wine</small></h3>
+            <span class="price">₹320</span>
+          </div>
+          <div>
+            <div class="size-row">
+              <button class="size-pill" onclick="selectSize(this)">S</button>
+              <button class="size-pill" onclick="selectSize(this)">M</button>
+              <button class="size-pill" onclick="selectSize(this)">L</button>
+              <button class="size-pill" onclick="selectSize(this)">XL</button>
+            </div>
+            <p class="size-hint">Please select a size</p>
+          </div>
+          <a href="order.html?product=Polo+Tee&color=Maroon&price=320&img=assets/images/polo/maroon.jpg"
+             class="btn btn-solid btn-block buy-now"
+             data-base-href="order.html?product=Polo+Tee&color=Maroon&price=320&img=assets/images/polo/maroon.jpg"
+             onclick="return buyNow(this, event)">Buy Now</a>
+        </div>
+      </div>
+
+    </div><!-- /product-grid -->
+
+    <!-- SIZE CHART -->
+    <div id="size-chart"></div>
+    <details class="size-chart-wrap reveal" style="margin-bottom:80px">
+      <summary>Size Chart — Polo Tees</summary>
+      <div style="overflow-x:auto;padding:0 4px 4px">
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>Chest (in)</th>
+              <th>Length (in)</th>
+              <th>Shoulder (in)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>S</td><td>38–40</td><td>27</td><td>16.5</td></tr>
+            <tr><td>M</td><td>40–42</td><td>28</td><td>17.5</td></tr>
+            <tr><td>L</td><td>42–44</td><td>29</td><td>18.5</td></tr>
+            <tr><td>XL</td><td>44–46</td><td>30</td><td>19.5</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:12px;color:var(--paper-dim);padding:12px 16px">
+          Measurements are approximate. If between sizes, size up for a relaxed fit.
+        </p>
+      </div>
+    </details>
+  </div><!-- /wrap -->
+
+  <!-- ───────── FOOTER ───────── -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <p class="wordmark" style="font-size:26px">Aarambh</p>
+          <p>Bold streetwear from India.<br>Wear it. Style it. Make it yours.</p>
+        </div>
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h5>Shop</h5>
+            <ul>
+              <li><a href="polo.html">Polo T-Shirts</a></li>
+              <li><a href="oversized.html">Oversized Tees</a></li>
+              <li><a href="printed.html">Printed Tees</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Contact</h5>
+            <ul>
+              <li id="footer-email">hello@aarambh.com</li>
+              <li><a id="footer-wa" href="#">WhatsApp Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2024 Aarambh. All rights reserved.</span>
+        <span>Made with 🔥 in India</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('footer-email').textContent = AARAMBH_CONFIG.CONTACT_EMAIL;
+    document.getElementById('footer-wa').href = 'https://wa.me/' + AARAMBH_CONFIG.WHATSAPP_NUMBER;
+
+    function selectSize(btn) {
+      const row = btn.closest('.size-row');
+      row.querySelectorAll('.size-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      // Update the Buy Now href with selected size
+      const card = btn.closest('.product-card');
+      const buyBtn = card.querySelector('.buy-now');
+      const baseHref = buyBtn.getAttribute('data-base-href');
+      buyBtn.setAttribute('href', baseHref + '&size=' + encodeURIComponent(btn.textContent.trim()));
+    }
+  </script>
+</body>
+</html>
